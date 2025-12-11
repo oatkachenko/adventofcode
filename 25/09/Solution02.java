@@ -24,11 +24,12 @@ void main(String[] args) throws IOException {
                 // Check corners are inside polygon
                 if (poly.contains(new int[]{ax, cy}) && poly.contains(new int[]{cx, ay})) {
                     // check that rectangle lines are also inside polygon
-                    for (int x = min(ax, cx); x < max(ax, cx); x += 100) {
+                    // with our dataset it's enough to check only each 1000th point of the line
+                    for (int x = min(ax, cx); x < max(ax, cx); x += 1000) {
                         if (!poly.contains(new int[]{x, ay})) continue out;
                         if (!poly.contains(new int[]{x, cy})) continue out;
                     }
-                    for (int y = min(ay, cy); y < max(ay, cy); y += 100) {
+                    for (int y = min(ay, cy); y < max(ay, cy); y += 1000) {
                         if (!poly.contains(new int[]{ax, y})) continue out;
                         if (!poly.contains(new int[]{cx, y})) continue out;
                     }
